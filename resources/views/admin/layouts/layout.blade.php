@@ -24,6 +24,8 @@
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
 </head>
 
@@ -80,6 +82,7 @@
                         
                             {{-- Toester For Error Showing --}}
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         @if ($errors->any())
@@ -88,6 +91,94 @@
             @endforeach
         @endif
     </script>
+
+
+
+
+<script>
+    $(document).ready(function(){
+        $('body').on('click', '.delete-item', function(e){
+            e.preventDefault();
+            let deleteUrl = $(this).attr('href');
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: deleteUrl,
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(data){
+                            Swal.fire(
+                                "Deleted!",
+                                "Your data has been deleted.",
+                                "success"
+                            ).then(() => {
+                                // সফলভাবে ডিলিট হলে রিলোড করতে চাও কিনা?
+                                location.reload(); // অথবা row remove করো
+                            });
+                        },
+                        error: function(xhr, status, error){
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+
+{{-- <script>
+    $(document).ready(function(){
+        $('body').on('click', '.delete-item', function(e){
+            e.preventDefault();
+            let deleteUrl = $(this).attr('href');
+
+
+            Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax{
+                        type: 'DELETE',
+                        url: deleteUrl,
+                        success:function(data){
+                            Swal.fire(
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                            )
+                        },
+                        error:function(xhr,status,error){
+                            console.log(error);
+                        }
+                  
+                    }
+                    
+                }
+            });
+
+        })
+    })
+</script> --}}
+
+    @stack('scripts')
 
 </body>
 
