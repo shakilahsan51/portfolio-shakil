@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Hero;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
+use App\Models\About;
 
-class HeroController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class HeroController extends Controller
      */
     public function index()
     {
-        $hero = Hero::first();
-        return view('admin.hero.index', compact('hero'));
-        
+        $about= About::first();
+        return view('admin.about.index', compact('about'));
     }
 
     /**
@@ -73,44 +72,38 @@ class HeroController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
+
         $request->validate([
-            'title'=> ['required', 'max:200'],
-            'sub_title'=>['required', 'max:500'],
-            'image'=>['max:3000', 'image']
+            'title' => ['required','max:200'],
+            'description' => ['required','max:5000'],
+            'image' => ['max:3000','image'],
+            'resume'=>['mimes:pdf,csv,txt','max:10000']
         ]);
 
-        // dd($request->all());
-        $hero = Hero::first();
+        $about = About::first();
+        $filePath = handleUpload('image', $about);
+        $resumePath = handleUpload('resume', $about);
 
-        if($request->hasFile('image')){
 
-            if($hero->image && File::exists(public_path($hero->image))){
-                File::delete(public_path($hero->image));
-            }
-
-            $image = $request->file('image');
-            $imageName = rand().$image->getClientOriginalName();
-            $image->move(public_path('/uploads'), $imageName);
-
-            $imagePath= "/uploads/".$imageName;
-        }
-
-        
-        // dd($imagePath);
-
-        Hero::updateOrCreate(
-            ['id'=>$id],
+        About::updateOrCreate(
+            ['id' => $id],
             [
-                'title'=>$request->title,
-                'sub_title'=>$request->sub_title,
-                'btn_text'=>$request->btn_text,
-                'btn_url'=>$request->btn_url,
-                'image'=>isset($imagePath) ? $imagePath : $hero->image,
+                'title' => $request->title,
+                'description' => $request->description,
+                'image' => $filePath ?? $about->image, // নতুন ফাইল থাকলে সেট, না থাকলে পুরোনোটা
+                'resume' => $resumePath ?? $about->resume // নতুন ফাইল থাকলে সেট, না থাকলে পুরোনোটা
             ]
         );
 
-            toastr()->success('Data Updated successfully');
-            return redirect()->back();
+        toastr()->success('Data Updated successfully');
+        return redirect()->back();
+
+    }
+
+    public function resumeDownload(){
+        $about = About::first();
+        return response()->download(public_path($about->resume));
     }
 
     /**
