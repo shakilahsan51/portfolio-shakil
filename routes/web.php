@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\PortfolioItemController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TyperTitleController;
@@ -59,4 +61,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'],f
 
     Route::get('resume/download',[AboutController::class, 'resumeDownload'])->name('resume.download');
     Route::resource('about',AboutController::class);
+
+    // Portfolio-Ctegory 
+    Route::resource('category', CategoryController::class);
+
+    // Portfolio-Item 
+    Route::resource('portfolio-item', PortfolioItemController::class);
 });
