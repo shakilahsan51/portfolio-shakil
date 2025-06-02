@@ -85,8 +85,9 @@ class PortfolioItemController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   $categories=Category::all();
+        $portfolioItem = PortfolioItem::findOrFail($id);
+        return view('admin.portfolio-item.edit', compact('categories', 'portfolioItem'));
     }
 
     /**
@@ -98,7 +99,30 @@ class PortfolioItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $request->validate([
+            'image'=> ['image','max:2000'],
+            'title'=> ['required', 'max:200'],
+            'description'=> ['required', 'max:2000'],
+            'category_id'=> ['required', 'numeric'],
+            'client'=> ['required', 'max:200'],
+            'website'=> ['url']
+        ]);
+
+
+        $portfolioItem = PortfolioItem::findOrFail($id);
+        $imagePath = handleUpload('image',$portfolioItem);
+
+        
+        $portfolioItem->image = (!empty($imagePath) ? $imagePath : $portfolioItem->image);
+        $portfolioItem->title = $request->title;
+        $portfolioItem->description = $request->description;
+        $portfolioItem->category_id = $request->category_id;
+        $portfolioItem->client = $request->client;
+        $portfolioItem->website = $request->website;
+        $portfolioItem->save();
+
+        toastr()->success('Item Updated successfully');
+        return redirect()->route('admin.portfolio-item.index');
     }
 
     /**
@@ -109,6 +133,8 @@ class PortfolioItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $portfolioItem = PortfolioItem::findOrFail($id);
+        deleteFileIfExist($portfolioItem->image);
+        $portfolioItem->delete();
     }
 }
