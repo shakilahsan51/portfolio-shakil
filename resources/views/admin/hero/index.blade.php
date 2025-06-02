@@ -13,7 +13,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Update Hero Section</h4>
+                    <h4>Update Hero Section</h4>a
                   </div>
                   <div class="card-body">
 
