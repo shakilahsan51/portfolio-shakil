@@ -43,6 +43,14 @@ body {
     object-fit: cover;
 }
 
+.fixed-image {
+	width: 100%;
+	height: 250px; /* ইচ্ছেমতো height */
+	object-fit: cover; /* ছবিকে crop করে ফ্রেমে আনবে */
+	border-radius: 10px; /* চাইলে */
+}
+
+
 /* ---------------------
 Button-Styles
 ----------------------- */
