@@ -125,14 +125,24 @@
                             _token: '{{ csrf_token() }}'
                         },
                         success: function(data){
-                            Swal.fire(
-                                "Deleted!",
-                                "Your data has been deleted.",
-                                "success"
-                            ).then(() => {
-                                // সফলভাবে ডিলিট হলে রিলোড করতে চাও কিনা?
-                                location.reload(); // অথবা row remove করো
-                            });
+
+                            if(data.status == 'error'){
+                                 Swal.fire(
+                                "You Can Not Delete!",
+                                "This file can not be deleted. it contain an item",
+                                "error"
+                                )
+                            }else{
+                                Swal.fire(
+                                    "Deleted!",
+                                    "Your data has been deleted.",
+                                    "success"
+                                    ).then(() => {
+                                    // সফলভাবে ডিলিট হলে রিলোড করতে চাও কিনা?
+                                    location.reload(); // অথবা row remove করো
+                                });
+                            }
+ 
                         },
                         error: function(xhr, status, error){
                             console.log(error);

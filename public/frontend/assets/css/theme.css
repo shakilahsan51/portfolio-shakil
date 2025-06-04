@@ -37,6 +37,12 @@ body {
     font-weight: 600;
 }
 
+.img-fix{
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+
 /* ---------------------
 Button-Styles
 ----------------------- */
