@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Category;
 use App\Models\Experience;
+use App\Models\Feedback;
+use App\Models\FeedbackSectionSetting;
 use App\Models\PortfolioItem;
 use App\Models\PortfolioSectionSetting;
 use App\Models\SkillItem;
@@ -29,6 +31,9 @@ class HomeController extends Controller
         $skillItems = SkillItem::all();
         $experience = Experience::first();
 
+        $feedbacks = Feedback::all();
+        $feedbackSettings = FeedbackSectionSetting::first();
+
 
         return view('frontend.home', 
             compact(
@@ -42,6 +47,8 @@ class HomeController extends Controller
                 'skill',
                 'skillItems',
                 'experience',
+                'feedbacks',
+                'feedbackSettings',
             )
         );
     }
