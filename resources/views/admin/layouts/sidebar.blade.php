@@ -40,14 +40,14 @@
                   <li class="nav-item active">
                       <a href="index.html" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                   </li>
-                  <li class="nav-item dropdown">
+                  {{-- <li class="nav-item dropdown">
                       <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                               class="fas fa-columns"></i> <span>Dropdown</span></a>
                       <ul class="dropdown-menu" style="display: none;">
                           <li><a class="nav-link" href="">test</a></li>
 
                       </ul>
-                  </li>
+                  </li> --}}
 
                   {{-- All Section  --}}
                   <li class="menu-header">Sections</li>
@@ -106,6 +106,17 @@
                                 class="fas fa-columns"></i> <span>Feedback</span></a>
                         <ul class="dropdown-menu" style="display: none;">
                             <li><a class="nav-link" href="{{route('admin.feedback.index')}}">Feedbacks</a></li>
+                            <li><a class="nav-link" href="{{route('admin.feedback-section-setting.index')}}">Feedback Setting</a></li>
+                        </ul>
+                    </li>
+
+
+                    {{-- Blog Section --}}
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                                class="fas fa-columns"></i> <span>Blogs</span></a>
+                        <ul class="dropdown-menu" style="display: none;">
+                            <li><a class="nav-link" href="{{route('admin.blog-category.index')}}">Category</a></li>
                             <li><a class="nav-link" href="{{route('admin.feedback-section-setting.index')}}">Feedback Setting</a></li>
                         </ul>
                     </li>
