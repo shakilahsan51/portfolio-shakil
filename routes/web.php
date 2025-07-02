@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\BlogSectionSettingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExperienceController;
@@ -32,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/blog', function () {
     return view('frontend.blog');
@@ -43,7 +44,7 @@ Route::get('/blog-details', function () {
 });
 
 
-Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
@@ -55,22 +56,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
-Route::get('portfolio-details/{id}',[HomeController::class,'showPortfolio'])->name('show.portfolio');
+Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->name('show.portfolio');
+Route::get('blog-details/{id}', [HomeController::class, 'showBlog'])->name('show.blog');
+
+Route::get('blog', [HomeController::class, 'blog'])->name('blog');
 
 
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'],function(){
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('hero', HeroController::class);
     Route::resource('typer-title', TyperTitleController::class);
-    Route::resource('service',ServiceController::class);
+    Route::resource('service', ServiceController::class);
 
 
     // Portfolio About 
-    Route::get('resume/download',[AboutController::class, 'resumeDownload'])->name('resume.download');
-    Route::resource('about',AboutController::class);
+    Route::get('resume/download', [AboutController::class, 'resumeDownload'])->name('resume.download');
+    Route::resource('about', AboutController::class);
 
     // Portfolio-Ctegory 
     Route::resource('category', CategoryController::class);
@@ -78,7 +82,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'],f
     // Portfolio-Item 
     Route::resource('portfolio-item', PortfolioItemController::class);
 
-     // Portfolio-Section-Setting
+    // Portfolio-Section-Setting
     Route::resource('portfolio-section-setting', PortfolioSectionSettingController::class);
 
 
@@ -104,4 +108,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'],f
 
     // Blog create
     Route::resource('blog', BlogController::class);
+
+    // Blog Section Setting Route
+    Route::resource('blog-sectin-setting', BlogSectionSettingController::class);
 });
