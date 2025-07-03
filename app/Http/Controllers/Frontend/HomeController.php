@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Blog;
 use App\Models\Hero;
+use App\Models\About;
 use App\Models\Service;
+use App\Models\Category;
+use App\Models\Feedback;
+use App\Mail\ContactMail;
+use App\Models\SkillItem;
+use App\Models\Experience;
 use App\Models\TyperTitle;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\About;
-use App\Models\Blog;
-use App\Models\BlogSectionSetting;
-use App\Models\Category;
-use App\Models\Experience;
-use App\Models\Feedback;
-use App\Models\FeedbackSectionSetting;
 use App\Models\PortfolioItem;
-use App\Models\PortfolioSectionSetting;
-use App\Models\SkillItem;
+use App\Models\BlogSectionSetting;
 use App\Models\SkillSectionSetting;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Models\FeedbackSectionSetting;
+use App\Models\PortfolioSectionSetting;
 
 class HomeController extends Controller
 {
@@ -84,5 +86,19 @@ class HomeController extends Controller
     {
         $blogs = Blog::latest()->paginate(9);
         return view('frontend.blog', compact('blogs'));
+    }
+
+
+    public function contact(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'max:200'],
+            'subject'=> ['required', 'max:300'],
+            'email'=>['required', 'email'],
+            'message'=>['required', 'max:500'],
+        ]);
+
+        Mail::send(new ContactMail($request->all()));
+        return response(['status'=>'success', 'message'=>'Mail send Successfully']);
     }
 }

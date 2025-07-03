@@ -104,6 +104,15 @@
 
 <script>
     $(document).ready(function(){
+
+        // csrf token
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content');
+        //     }
+        // });
+
+
         $('body').on('click', '.delete-item', function(e){
             e.preventDefault();
             let deleteUrl = $(this).attr('href');

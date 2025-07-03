@@ -61,8 +61,10 @@ require __DIR__ . '/auth.php';
 
 Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->name('show.portfolio');
 Route::get('blog-details/{id}', [HomeController::class, 'showBlog'])->name('show.blog');
-
 Route::get('blog', [HomeController::class, 'blog'])->name('blog');
+
+
+Route::post('contact', [HomeController::class, 'contact'])->name('contact');
 
 
 
