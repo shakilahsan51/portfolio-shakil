@@ -129,8 +129,8 @@
                                 class="fas fa-columns"></i> <span>Footer</span></a>
                         <ul class="dropdown-menu" style="display: none;">
                             <li><a class="nav-link" href="{{route('admin.footer-social.index')}}">Social Links</a></li>
-                            <li><a class="nav-link" href="{{route('admin.blog.index')}}">Blog List</a></li>
-                            <li><a class="nav-link" href="{{route('admin.blog-sectin-setting.index')}}">Section Setting</a></li>
+                            <li><a class="nav-link" href="{{route('admin.footer-info.index')}}">Footer Information</a></li>
+                            <li><a class="nav-link" href="{{route('admin.footer-contact-info.index')}}">Contact Info</a></li>
                         </ul>
                     </li>
 
