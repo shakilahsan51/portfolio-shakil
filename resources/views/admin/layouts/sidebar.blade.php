@@ -132,6 +132,7 @@
                             <li><a class="nav-link" href="{{route('admin.footer-info.index')}}">Footer Information</a></li>
                             <li><a class="nav-link" href="{{route('admin.footer-contact-info.index')}}">Contact Info</a></li>
                             <li><a class="nav-link" href="{{route('admin.footer-usefull-link.index')}}">Usefull Links</a></li>
+                            <li><a class="nav-link" href="{{route('admin.footer-help-link.index')}}">Help Links</a></li>
                         </ul>
                     </li>
 
