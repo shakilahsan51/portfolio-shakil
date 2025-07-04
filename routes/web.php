@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\FeedbackSectionSettingController;
 use App\Http\Controllers\Admin\FooterContactInfoController;
 use App\Http\Controllers\Admin\FooterInfoController;
 use App\Http\Controllers\Admin\FooterSocialLinkController;
+use App\Http\Controllers\Admin\FooterUsefullLinkController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PortfolioItemController;
 use App\Http\Controllers\Admin\PortfolioSectionSetting;
@@ -71,7 +72,11 @@ Route::post('contact', [HomeController::class, 'contact'])->name('contact');
 
 
 
+
+
+
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+
     Route::resource('hero', HeroController::class);
     Route::resource('typer-title', TyperTitleController::class);
     Route::resource('service', ServiceController::class);
@@ -80,29 +85,27 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     // Portfolio About 
     Route::get('resume/download', [AboutController::class, 'resumeDownload'])->name('resume.download');
     Route::resource('about', AboutController::class);
-
     // Portfolio-Ctegory 
     Route::resource('category', CategoryController::class);
-
     // Portfolio-Item 
     Route::resource('portfolio-item', PortfolioItemController::class);
-
     // Portfolio-Section-Setting
     Route::resource('portfolio-section-setting', PortfolioSectionSettingController::class);
 
 
     // Skill-Section-Setting
     Route::resource('skill-section-setting', SkillSectionSettingController::class);
-
     // Skill-Item
     Route::resource('skill-item', SkillItemController::class);
+
 
     // Experience
     Route::resource('experience', ExperienceController::class);
 
+
+
     // Feedback
     Route::resource('feedback', FeedbackController::class);
-
     // Feedback Section Setting
     Route::resource('feedback-section-setting', FeedbackSectionSettingController::class);
 
@@ -110,10 +113,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     // Blog Category
     Route::resource('blog-category', BlogCategoryController::class);
-
     // Blog create
     Route::resource('blog', BlogController::class);
-
     // Blog Section Setting Route
     Route::resource('blog-sectin-setting', BlogSectionSettingController::class);
 
@@ -125,5 +126,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('footer-info', FooterInfoController::class);
     // Footer Social Route
     Route::resource('footer-contact-info', FooterContactInfoController::class);
+    // Footer Usefull link Route
+    Route::resource('footer-usefull-link',FooterUsefullLinkController::class);
 
 });
