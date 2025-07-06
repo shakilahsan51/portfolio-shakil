@@ -47,15 +47,15 @@ class FeedbackController extends Controller
         ]);
 
     
-        // নতুন Feedback অবজেক্ট তৈরি
+      
         $feedback = new Feedback();
 
-        // ডেটা সেট করা হচ্ছে
+        
         $feedback->name = $request->name;
         $feedback->position = $request->position;
         $feedback->description = $request->description;
 
-        // ডাটাবেজে সেভ করা হচ্ছে
+       
         $feedback->save();
 
 
@@ -104,15 +104,15 @@ class FeedbackController extends Controller
         ]);
 
     
-        // নতুন Feedback অবজেক্ট তৈরি
+       
         $feedback = Feedback::findOrFail($id);
 
-        // ডেটা সেট করা হচ্ছে
+        
         $feedback->name = $request->name;
         $feedback->position = $request->position;
         $feedback->description = $request->description;
 
-        // ডাটাবেজে সেভ করা হচ্ছে
+        
         $feedback->save();
 
 

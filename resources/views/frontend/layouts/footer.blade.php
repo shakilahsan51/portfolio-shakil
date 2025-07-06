@@ -4,15 +4,16 @@
 	$footerUsefullLink = \App\Models\FooterUsefullLink::all();
 	$footerContactInfo = \App\Models\FooterContactInfo::first();
 	$FooterHelpLink = \App\Models\FooterHelpLink::all();
+	$generalSetting = \App\Models\GeneralSetting::first();
 @endphp
-
+	
 <footer class="footer-area">
 	<div class="container">
 		<div class="row footer-widgets">
 			<div class="col-md-12 col-lg-3 widget">
 				<div class="text-box">
 					<figure class="footer-logo">
-						<img src="images/logo.png" alt="">
+						<img src="{{ asset($generalSetting->footer_logo) }}" alt="">
 					</figure>
 					<p>{{ $footerInformation->info }}</p>
 					<ul class="d-flex flex-wrap">

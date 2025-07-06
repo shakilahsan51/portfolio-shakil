@@ -14,12 +14,14 @@ use App\Http\Controllers\Admin\FooterHelpLinkController;
 use App\Http\Controllers\Admin\FooterInfoController;
 use App\Http\Controllers\Admin\FooterSocialLinkController;
 use App\Http\Controllers\Admin\FooterUsefullLinkController;
+use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PortfolioItemController;
 use App\Http\Controllers\Admin\PortfolioSectionSetting;
 use App\Http\Controllers\Admin\PortfolioSectionSettingController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SkillItemController;
 use App\Http\Controllers\Admin\SkillSectionSettingController;
 use App\Http\Controllers\Admin\TyperTitleController;
@@ -128,8 +130,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     // Footer Social Route
     Route::resource('footer-contact-info', FooterContactInfoController::class);
     // Footer Usefull link Route
-    Route::resource('footer-usefull-link',FooterUsefullLinkController::class);
+    Route::resource('footer-usefull-link', FooterUsefullLinkController::class);
     // Footer Help link Route
-    Route::resource('footer-help-link',FooterHelpLinkController::class);
+    Route::resource('footer-help-link', FooterHelpLinkController::class);
 
+
+
+    // Setting Route
+    Route::get('settings', SettingController::class)->name('settings.index');
+
+
+    // General Setting Route
+    Route::resource('general-setting', GeneralSettingController::class);
 });

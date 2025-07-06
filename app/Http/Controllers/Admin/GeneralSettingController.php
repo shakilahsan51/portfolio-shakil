@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Models\GeneralSetting;
 use App\Http\Controllers\Controller;
-use App\Models\About;
 
-class AboutController extends Controller
+class GeneralSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about= About::first();
-        return view('admin.about.index', compact('about'));
+        $settings = GeneralSetting::first();
+        return view('admin.setting.general-settings.index', compact('settings'));
     }
 
     /**
@@ -72,39 +71,32 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
-
         $request->validate([
-            'title' => ['required','max:200'],
-            'description' => ['required','max:5000'],
-            'image' => ['max:3000','image'],
-            'resume'=>['mimes:pdf,csv,txt','max:10000']
+            'logo' => ['required', 'max:50000', 'image'],
+            'footer_logo' => ['required', 'max:50000', 'image'],
+            'favicon' => ['required', 'max:50000', 'image'],
         ]);
 
-        $about = About::first();
-        $filePath = handleUpload('image', $about);
-        $resumePath = handleUpload('resume', $about);
 
+        $settings = GeneralSetting::first();
 
-        About::updateOrCreate(
-            ['id' => $id],
-            [
-                'title' => $request->title,
-                'description' => $request->description,
-                'image' => $filePath ?? $about->image,
-                'resume' => $resumePath ?? $about->resume 
-            ]
-        );
+        $logo = handleUpload('logo', $settings);
+        $footer_logo = handleUpload('footer_logo', $settings);
+        $favicon = handleUpload('favicon', $settings);
+
+        $genarelSetting = new GeneralSetting();
+        $genarelSetting->footer_logo = (!empty($footer_logo) ? $footer_logo : $settings->footer_logo);
+        $genarelSetting->logo = (!empty($logo) ? $logo : $settings->logo);
+        $genarelSetting->favicon = (!empty($favicon) ? $favicon : $settings->favicon);
+
+        $genarelSetting->save();
+
 
         toastr()->success('Data Updated successfully');
         return redirect()->back();
-
     }
 
-    public function resumeDownload(){
-        $about = About::first();
-        return response()->download(public_path($about->resume));
-    }
+
 
     /**
      * Remove the specified resource from storage.
