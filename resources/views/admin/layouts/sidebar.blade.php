@@ -1,4 +1,5 @@
       <div class="navbar-bg"></div>
+
       <nav class="navbar navbar-expand-lg main-navbar">
           <div class="form-inline mr-auto"></div>
           <ul class="navbar-nav navbar-right">
@@ -37,17 +38,9 @@
               </div>
               <ul class="sidebar-menu">
                   <li class="menu-header">Dashboard</li>
-                  <li class="nav-item active">
+                  <li class="nav-item">
                       <a href="index.html" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                   </li>
-                  {{-- <li class="nav-item dropdown">
-                      <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                              class="fas fa-columns"></i> <span>Dropdown</span></a>
-                      <ul class="dropdown-menu" style="display: none;">
-                          <li><a class="nav-link" href="">test</a></li>
-
-                      </ul>
-                  </li> --}}
 
                   {{-- All Section  --}}
                   <li class="menu-header">Sections</li>
@@ -124,22 +117,23 @@
 
 
                     {{-- Footer Section --}}
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown {{ setSidebarActive(['admin.footer-social.*', 'admin.footer-info.*', 'admin.footer-contact-info.*', 'admin.footer-usefull-link.*', 'admin.footer-help-link.*']) }}">
+
                         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                                 class="fas fa-columns"></i> <span>Footer</span></a>
                         <ul class="dropdown-menu" style="display: none;">
-                            <li><a class="nav-link" href="{{route('admin.footer-social.index')}}">Social Links</a></li>
-                            <li><a class="nav-link" href="{{route('admin.footer-info.index')}}">Footer Information</a></li>
-                            <li><a class="nav-link" href="{{route('admin.footer-contact-info.index')}}">Contact Info</a></li>
-                            <li><a class="nav-link" href="{{route('admin.footer-usefull-link.index')}}">Usefull Links</a></li>
-                            <li><a class="nav-link" href="{{route('admin.footer-help-link.index')}}">Help Links</a></li>
+                            <li class="{{ setSidebarActive(['admin.footer-social.*']) }}"><a class="nav-link" href="{{route('admin.footer-social.index')}}">Social Links</a></li>
+                            <li class="{{ setSidebarActive(['admin.footer-info.*']) }}"><a class="nav-link" href="{{route('admin.footer-info.index')}}">Footer Information</a></li>
+                            <li class="{{ setSidebarActive(['admin.footer-contact-info.*']) }}"><a class="nav-link" href="{{route('admin.footer-contact-info.index')}}">Contact Info</a></li>
+                            <li class="{{ setSidebarActive(['admin.footer-usefull-link.*']) }}"><a class="nav-link" href="{{route('admin.footer-usefull-link.index')}}">Usefull Links</a></li>
+                            <li class="{{ setSidebarActive(['admin.footer-help-link.*']) }}"><a class="nav-link" href="{{route('admin.footer-help-link.index')}}">Help Links</a></li>
                         </ul>
                     </li>
 
-
+                    <li class="menu-header">Sections</li>
 
                     {{-- Settings Section --}}
-                    <li><a class="nav-link" href="{{route('admin.settings.index')}}"><i class="far fa-square"></i> <span>General Settings</span></a>
+                    <li class="{{ setSidebarActive(['admin.settings.*']) }}"><a class="nav-link" href="{{route('admin.settings.index')}}"><i class="far fa-square"></i> <span>General Settings</span></a>
                     </li>
                     {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a>
                     </li> --}}
