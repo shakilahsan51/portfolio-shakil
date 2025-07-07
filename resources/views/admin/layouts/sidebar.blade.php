@@ -33,9 +33,9 @@
               <div class="sidebar-brand">
                   <a href="index.html">Shakil's Portfolio</a>
               </div>
-              <div class="sidebar-brand sidebar-brand-sm">
+              {{-- <div class="sidebar-brand sidebar-brand-sm">
                   <a href="index.html">St</a>
-              </div>
+              </div> --}}
               <ul class="sidebar-menu">
                   <li class="menu-header">Dashboard</li>
                   <li class="nav-item">
