@@ -14,7 +14,7 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="{{ Route::currentRouteName()== 'home' ? 'home-page' : url('/') }}">Home</a>
+						<a class="nav-link active" aria-current="page" href="{{ Route::currentRouteName()== 'home' ? '#home-page' : url('/') }}">Home</a>
 					</li>
 
 					@if (Route::currentRouteName()== 'home')

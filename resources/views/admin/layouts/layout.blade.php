@@ -151,8 +151,8 @@
                                     "Your data has been deleted.",
                                     "success"
                                     ).then(() => {
-                                    // সফলভাবে ডিলিট হলে রিলোড করতে চাও কিনা?
-                                    location.reload(); // অথবা row remove করো
+                                    
+                                    location.reload(); 
                                 });
                             }
  
