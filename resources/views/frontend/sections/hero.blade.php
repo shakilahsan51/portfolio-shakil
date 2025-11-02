@@ -30,6 +30,6 @@
         @endphp
 
         let titles = @json($titles); // সঠিক Blade টেমপ্লেটিং
-        $('.header-area .typer-title').typer(titles);
+        $('.header-area .typer-title').typer(titles); 
     </script>
 @endpush

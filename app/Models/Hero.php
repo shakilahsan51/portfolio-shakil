@@ -9,7 +9,7 @@ class Hero extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
+    protected $fillable = [
         'title',
         'sub_title',
         'btn_text',
