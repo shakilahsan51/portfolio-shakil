@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('image')->nullable();
             $table->string('title')->nullable();
-            $table->integer('category_id')->nullable();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->cascadeOnDelete();
             $table->text('description')->nullable();
             $table->string('client')->nullable();
             $table->text('website')->nullable();

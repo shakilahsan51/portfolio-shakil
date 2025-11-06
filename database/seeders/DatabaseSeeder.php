@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Database\Seeders\PortfolioItemTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(HeroTableSeeder::class);
         $this->call(AboutTableSeeder::class);
         $this->call(CategoryTableSeeder::class);
+        $this->call(PortfolioItemTableSeeder::class);
+        $this->call(PortfolioSectionSettingSeeder::class);
     }
 }
