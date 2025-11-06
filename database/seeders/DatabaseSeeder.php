@@ -30,5 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call(BlogSeeder::class);
         $this->call(BlogSectionSettingSeeder::class);
         $this->call(GeneralSettingSeeder::class);
+        $this->call(FooterInfoSeeder::class);
+        $this->call(FooterUsefullLinkSeeder::class);
+        $this->call(FooterContactInfoSeeder::class);
     }
 }
