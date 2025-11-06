@@ -32,11 +32,11 @@ class HomeController extends Controller
         $portfolioTitle = PortfolioSectionSetting::first();
         $portfolioCategories = Category::all();
         $portfolioItems = PortfolioItem::all();
-        // dd($portfolioItems);
+
         $skill = SkillSectionSetting::first();
         $skillItems = SkillItem::all();
+        
         $experience = Experience::first();
-
         $feedbacks = Feedback::all();
         $feedbackSettings = FeedbackSectionSetting::first();
 

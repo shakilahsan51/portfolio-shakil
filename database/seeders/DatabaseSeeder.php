@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoryTableSeeder::class);
         $this->call(PortfolioItemTableSeeder::class);
         $this->call(PortfolioSectionSettingSeeder::class);
+        $this->call(SkillItemSeeder::class);
+        $this->call(SkillSectionSettingSeeder::class);
     }
 }
