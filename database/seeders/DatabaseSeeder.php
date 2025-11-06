@@ -27,5 +27,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SkillSectionSettingSeeder::class);
         $this->call(ExperienceSeeder::class);
         $this->call(FeedbackSectionSettingSeeder::class);
+        $this->call(BlogSeeder::class);
+        $this->call(BlogSectionSettingSeeder::class);
+        $this->call(GeneralSettingSeeder::class);
     }
 }
