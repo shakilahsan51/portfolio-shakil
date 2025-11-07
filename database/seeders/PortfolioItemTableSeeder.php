@@ -16,10 +16,23 @@ class PortfolioItemTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = Category::pluck('id')->toArray();
-        foreach ($categories as $category) {
-            PortfolioItem::factory()->create([
-                'category_id' => $category
+        $images = [
+            'frontend/assets/images/portfolio-1.jpg',
+            'frontend/assets/images/portfolio-2.jpg',
+            'frontend/assets/images/portfolio-3.jpg',
+        ];
+
+        $categories = Category::inRandomOrder()->limit(3)->pluck('id')->toArray();
+
+        foreach ($categories as $index => $categoryId) {
+
+            PortfolioItem::create([
+                'category_id' => $categoryId,
+                'title'       => fake()->sentence(),
+                'description' => fake()->paragraph(),
+                'client'      => fake()->name(),
+                'website'     => fake()->url(),
+                'image'       => $images[$index],
             ]);
         }
     }
