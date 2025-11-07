@@ -35,7 +35,8 @@
                 @if (session('status'))
                   <p class="text-success">{{session('status')}}</p>
                 @endif
-                <form method="POST" action="{{route('login')}}" class="needs-validation" novalidate="">
+
+                <form method="POST" action="{{route('admin.login')}}" class="needs-validation" novalidate="">
                     @csrf
 
                     {{-- Email --}}
