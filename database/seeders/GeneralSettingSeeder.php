@@ -15,6 +15,10 @@ class GeneralSettingSeeder extends Seeder
      */
     public function run()
     {
-        GeneralSetting::factory()->create();
+        GeneralSetting::create([
+            'logo' => url('assets/img/logos/app-logo.png'),
+            'footer_logo' => url('assets/img/logos/app-logo.png'),
+            'favicon' => url('assets/img/logos/app-logo.png'),
+        ]);
     }
 }

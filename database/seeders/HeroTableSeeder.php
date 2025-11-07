@@ -16,11 +16,11 @@ class HeroTableSeeder extends Seeder
     public function run()
     {
         Hero::create([
-            'title'     => 'Welcome to Our Platform',
-            'sub_title' => 'Empowering businesses with innovative solutions.',
-            'btn_text'  => 'Get Started',
-            'btn_url'   => '/register',
-            'image'     => url('assets/img/example-image.jpg'),
+            'title'     => 'Hi, I am Shakil Ahsan',
+            'sub_title' => 'Laravel Developer — transforming ideas into secure, optimized and high-performance web solutions.',
+            'btn_text'  => 'See My Work',
+            'btn_url'   => '/portfolio',
+            'image'     => url('assets/img/hero/hero-1.jpg'),
         ]);
     }
 }

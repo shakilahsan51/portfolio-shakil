@@ -25,11 +25,11 @@
         @php
             $titles = [];
             foreach($typerTitle as $title){
-                $titles[] = $title->title; // এখানে আপনি ভুল করে title->title লিখেছিলেন
+                $titles[] = $title->title; 
             }
         @endphp
 
-        let titles = @json($titles); // সঠিক Blade টেমপ্লেটিং
+        let titles = @json($titles);
         $('.header-area .typer-title').typer(titles); 
     </script>
 @endpush

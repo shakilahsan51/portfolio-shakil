@@ -35,7 +35,7 @@ class HomeController extends Controller
 
         $skill = SkillSectionSetting::first();
         $skillItems = SkillItem::all();
-        
+
         $experience = Experience::first();
         $feedbacks = Feedback::all();
         $feedbackSettings = FeedbackSectionSetting::first();

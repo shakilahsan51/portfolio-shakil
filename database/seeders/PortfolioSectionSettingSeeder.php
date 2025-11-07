@@ -15,6 +15,9 @@ class PortfolioSectionSettingSeeder extends Seeder
      */
     public function run()
     {
-        PortfolioSectionSetting::factory(5)->create();
+        PortfolioSectionSetting::create([
+            'title'     => 'My Latest Portfolio',
+            'sub_title' => 'A showcase of projects that demonstrate my skills and creativity in web development',
+        ]);
     }
 }
