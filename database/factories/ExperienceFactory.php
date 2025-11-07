@@ -17,11 +17,11 @@ class ExperienceFactory extends Factory
     public function definition()
     {
         return [
-            'image' => $this->faker->imageUrl(),
-            'title' => $this->faker->jobTitle(),
-            'description' => $this->faker->paragraph(),
-            'phone' => $this->faker->phoneNumber(),
-            'email' => $this->faker->unique()->safeEmail(),
+            // 'image' => $this->faker->imageUrl(),
+            // 'title' => $this->faker->jobTitle(),
+            // 'description' => $this->faker->paragraph(),
+            // 'phone' => $this->faker->phoneNumber(),
+            // 'email' => $this->faker->unique()->safeEmail(),
         ];
     }
 }

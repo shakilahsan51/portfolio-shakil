@@ -15,7 +15,15 @@ class ExperienceSeeder extends Seeder
      */
     public function run()
     {
-         Experience::factory(2)->create();
-         
+        Experience::create([
+            'image'       => 'frontend/assets/images/experience.jpg',
+            'title'       => '1 Year Experience in Web Design & Development',
+            'description' => "I have 1 year of experience in web development, working on both front-end and back-end tasks.\n"
+                . "Proficient in HTML, CSS, JavaScript, PHP, Laravel, and MySQL.\n"
+                . "Experienced in building CRUD applications, handling images, user authentication, and dynamic content.\n"
+                . "Worked on real projects from development to deployment, ensuring clean, efficient, and scalable solutions.",
+            'phone'       => '01752854685',
+            'email'       => 'shakilahsan51@gmail.com',
+        ]);
     }
 }

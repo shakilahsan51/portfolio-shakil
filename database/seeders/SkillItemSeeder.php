@@ -15,6 +15,13 @@ class SkillItemSeeder extends Seeder
      */
     public function run()
     {
-        SkillItem::factory(8)->create();
+        $languages = ['PHP', 'Laravel', 'JavaScript', 'CSS', 'Tailwind', 'MySQL'];
+
+        foreach ($languages as $language) {
+            SkillItem::create([
+                'name'    => $language,
+                'percent' => rand(50, 100),
+            ]);
+        }
     }
 }

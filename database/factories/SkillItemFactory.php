@@ -17,8 +17,7 @@ class SkillItemFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->randomElement(['PHP', 'Laravel', 'JavaScript', 'HTML', 'CSS', 'Tailwind', 'MySQL']),
-            'percent' => $this->faker->numberBetween(50, 100),
+            //
         ];
     }
 }

@@ -15,6 +15,10 @@ class SkillSectionSettingSeeder extends Seeder
      */
     public function run()
     {
-        SkillSectionSetting::factory()->create();
+        SkillSectionSetting::create([
+            'title' => 'My Skills',
+            'sub_title' => 'These Are The Technologies I Have Worked With Recently.',
+            'image' => 'frontend/assets/images/skill-image.jpg',
+        ]);
     }
 }

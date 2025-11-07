@@ -17,9 +17,7 @@ class SkillSectionSettingFactory extends Factory
     public function definition()
     {
         return [
-            'title' => 'My Skills',
-            'sub_title' => 'These are the technologies I have worked with recently.', 
-            'image' => $this->faker->imageUrl(),
+            //
         ];
     }
 }
